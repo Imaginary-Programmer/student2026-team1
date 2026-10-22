@@ -1,5 +1,7 @@
 package registration;
 
+import java.util.regex.Pattern;
+
 public class UserRegistration {
 
     // Базовая реализация: email валиден, если содержит "@" и "."
@@ -27,5 +29,9 @@ public class UserRegistration {
         if (!password.equals(confirmPassword)) {
             throw new RegistrationException("Пароли не совпадают");
         }
+    }
+
+    public boolean validateLatinUsername(String username) {
+        return Pattern.compile("[A-Za-z]{3,}").matcher(username).matches();
     }
 }

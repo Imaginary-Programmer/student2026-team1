@@ -38,4 +38,19 @@ class UserRegistrationTest {
         assertThrows(RegistrationException.class, () ->
             reg.register("student@example.com", "secret123", "different", "student"));
     }  
+
+    @Test
+    void validLatinUserNameTrue() {
+        assertTrue(reg.validateLatinUsername("Lololoshka"));
+    }
+
+    @Test
+    void validLatinUserNameFalse1() {
+        assertFalse(reg.validateLatinUsername("Lo"));
+    }
+
+    @Test
+    void validLatinUserNameFalse2() {
+        assertFalse(reg.validateLatinUsername("Чебурек"));
+    }
 }
